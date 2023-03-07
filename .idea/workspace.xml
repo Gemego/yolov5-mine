@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Introduce the original utils, waiting for further modification." />
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Introduce the original implementation of common.py which contains the important class DetectMultiBackend.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="3625000" />
+      <workItem from="1678169895070" duration="5136000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -128,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678173849034</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Introduce the original implementation of common.py which contains the important class DetectMultiBackend.">
+      <created>1678174607370</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678174607370</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +193,7 @@
     <MESSAGE value="Introduce the original detect.py, waiting for further modification." />
     <MESSAGE value="Delete the Segmentation model class which will not be used." />
     <MESSAGE value="Introduce the original utils, waiting for further modification." />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduce the original utils, waiting for further modification." />
+    <MESSAGE value="Introduce the original implementation of common.py which contains the important class DetectMultiBackend." />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduce the original implementation of common.py which contains the important class DetectMultiBackend." />
   </component>
 </project>
