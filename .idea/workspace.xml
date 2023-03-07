@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Don't need to check official git version of YOLOv5.">
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Don't docker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
@@ -60,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="5647000" />
+      <workItem from="1678169895070" duration="7785000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -160,7 +160,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678176814098</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Don't need DDP mode.">
+      <created>1678177838176</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1678177838176</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Don't docker">
+      <created>1678177890926</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1678177890926</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +233,8 @@
     <MESSAGE value="RANK is used for distributed training which will not be used." />
     <MESSAGE value="WORLD_SIZE is used for distributed training which will not be used." />
     <MESSAGE value="Don't need to check official git version of YOLOv5." />
-    <option name="LAST_COMMIT_MESSAGE" value="Don't need to check official git version of YOLOv5." />
+    <MESSAGE value="Don't need DDP mode." />
+    <MESSAGE value="Don't docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Don't docker" />
   </component>
 </project>

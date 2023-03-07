@@ -30,8 +30,8 @@ from utils.autobatch import check_train_batch_size
 from utils.callbacks import Callbacks
 from utils.dataloaders import create_dataloader
 from utils.downloads import attempt_download, is_url
-from utils.general import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_dataset, check_file, check_git_info,
-                           check_git_status, check_img_size, check_requirements, check_suffix, check_yaml, colorstr,
+from utils.general import (LOGGER, TQDM_BAR_FORMAT, check_amp, check_dataset, check_file,
+                           check_img_size, check_suffix, check_yaml, colorstr,
                            get_latest_run, increment_path, init_seeds, intersect_dicts, labels_to_class_weights,
                            labels_to_image_weights, methods, one_cycle, print_args, print_mutation, strip_optimizer,
                            yaml_save)
@@ -69,22 +69,21 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
 
     # Loggers
     data_dict = None
-    if RANK in {-1, 0}:
-        loggers = Loggers(save_dir, weights, opt, hyp, LOGGER)  # loggers instance
+    loggers = Loggers(save_dir, weights, opt, hyp, LOGGER)  # loggers instance
 
-        # Register actions
-        for k in methods(loggers):
-            callbacks.register_action(k, callback=getattr(loggers, k))
+    # Register actions
+    for k in methods(loggers):
+        callbacks.register_action(k, callback=getattr(loggers, k))
 
-        # Process custom dataset artifact link
-        data_dict = loggers.remote_dataset
-        if resume:  # If resuming runs from remote artifact
-            weights, epochs, hyp, batch_size = opt.weights, opt.epochs, opt.hyp, opt.batch_size
+    # Process custom dataset artifact link
+    data_dict = loggers.remote_dataset
+    if resume:  # If resuming runs from remote artifact
+        weights, epochs, hyp, batch_size = opt.weights, opt.epochs, opt.hyp, opt.batch_size
 
     # Config
-    plots = not evolve and not opt.noplots  # create plots
+    plots = not opt.noplots  # create plots
     cuda = device.type != 'cpu'
-    init_seeds(opt.seed + 1 + RANK, deterministic=True)
+    init_seeds(opt.seed, deterministic=True)
     with torch_distributed_zero_first(LOCAL_RANK):
         data_dict = data_dict or check_dataset(data)  # check if None
     train_path, val_path = data_dict['train'], data_dict['val']
@@ -123,7 +122,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     imgsz = check_img_size(opt.imgsz, gs, floor=gs * 2)  # verify imgsz is gs-multiple
 
     # Batch size
-    if RANK == -1 and batch_size == -1:  # single-GPU only, estimate best batch size
+    if batch_size == -1:  # single-GPU only, estimate best batch size
         batch_size = check_train_batch_size(model, imgsz, amp)
         loggers.on_params_update({"batch_size": batch_size})
 
@@ -141,7 +140,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     scheduler = lr_scheduler.LambdaLR(optimizer, lr_lambda=lf)  # plot_lr_scheduler(optimizer, scheduler, epochs)
 
     # EMA
-    ema = ModelEMA(model) if RANK in {-1, 0} else None
+    ema = ModelEMA(model)
 
     # Resume
     best_fitness, start_epoch = 0.0, 0
@@ -150,21 +149,10 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
             best_fitness, start_epoch, epochs = smart_resume(ckpt, optimizer, ema, weights, epochs, resume)
         del ckpt, csd
 
-    # DP mode
-    if cuda and RANK == -1 and torch.cuda.device_count() > 1:
-        LOGGER.warning('WARNING ⚠️ DP not recommended, use torch.distributed.run for best DDP Multi-GPU results.\n'
-                       'See Multi-GPU Tutorial at https://github.com/ultralytics/yolov5/issues/475 to get started.')
-        model = torch.nn.DataParallel(model)
-
-    # SyncBatchNorm
-    if opt.sync_bn and cuda and RANK != -1:
-        model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model).to(device)
-        LOGGER.info('Using SyncBatchNorm()')
-
     # Trainloader
     train_loader, dataset = create_dataloader(train_path,
                                               imgsz,
-                                              batch_size // WORLD_SIZE,
+                                              batch_size,
                                               gs,
                                               single_cls,
                                               hyp=hyp,
@@ -183,30 +171,25 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     assert mlc < nc, f'Label class {mlc} exceeds nc={nc} in {data}. Possible class labels are 0-{nc - 1}'
 
     # Process 0
-    if RANK in {-1, 0}:
-        val_loader = create_dataloader(val_path,
-                                       imgsz,
-                                       batch_size // WORLD_SIZE * 2,
-                                       gs,
-                                       single_cls,
-                                       hyp=hyp,
-                                       cache=None if noval else opt.cache,
-                                       rect=True,
-                                       rank=-1,
-                                       workers=workers * 2,
-                                       pad=0.5,
-                                       prefix=colorstr('val: '))[0]
+    val_loader = create_dataloader(val_path,
+                                   imgsz,
+                                   batch_size // 2,
+                                   gs,
+                                   single_cls,
+                                   hyp=hyp,
+                                   cache=None if noval else opt.cache,
+                                   rect=True,
+                                   rank=-1,
+                                   workers=workers * 2,
+                                   pad=0.5,
+                                   prefix=colorstr('val: '))[0]
 
-        if not resume:
-            if not opt.noautoanchor:
-                check_anchors(dataset, model=model, thr=hyp['anchor_t'], imgsz=imgsz)  # run AutoAnchor
-            model.half().float()  # pre-reduce anchor precision
+    if not resume:
+        if not opt.noautoanchor:
+            check_anchors(dataset, model=model, thr=hyp['anchor_t'], imgsz=imgsz)  # run AutoAnchor
+        model.half().float()  # pre-reduce anchor precision
 
-        callbacks.run('on_pretrain_routine_end', labels, names)
-
-    # DDP mode
-    if cuda and RANK != -1:
-        model = smart_DDP(model)
+    callbacks.run('on_pretrain_routine_end', labels, names)
 
     # Model attributes
     nl = de_parallel(model).model[-1].nl  # number of detection layers (to scale hyps)
@@ -251,12 +234,9 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
         # dataset.mosaic_border = [b - imgsz, -b]  # height, width borders
 
         mloss = torch.zeros(3, device=device)  # mean losses
-        if RANK != -1:
-            train_loader.sampler.set_epoch(epoch)
         pbar = enumerate(train_loader)
         LOGGER.info(('\n' + '%11s' * 7) % ('Epoch', 'GPU_mem', 'box_loss', 'obj_loss', 'cls_loss', 'Instances', 'Size'))
-        if RANK in {-1, 0}:
-            pbar = tqdm(pbar, total=nb, bar_format=TQDM_BAR_FORMAT)  # progress bar
+        pbar = tqdm(pbar, total=nb, bar_format=TQDM_BAR_FORMAT)  # progress bar
         optimizer.zero_grad()
         for i, (imgs, targets, paths, _) in pbar:  # batch -------------------------------------------------------------
             callbacks.run('on_train_batch_start')
@@ -286,8 +266,6 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
             with torch.cuda.amp.autocast(amp):
                 pred = model(imgs)  # forward
                 loss, loss_items = compute_loss(pred, targets.to(device))  # loss scaled by batch_size
-                if RANK != -1:
-                    loss *= WORLD_SIZE  # gradient averaged between devices in DDP mode
                 if opt.quad:
                     loss *= 4.
 
@@ -424,7 +402,6 @@ def parse_opt(known=False):
     parser.add_argument('--noval', action='store_true', help='only validate final epoch')
     parser.add_argument('--noautoanchor', action='store_true', help='disable AutoAnchor')
     parser.add_argument('--noplots', action='store_true', help='save no plot files')
-    parser.add_argument('--evolve', type=int, nargs='?', const=300, help='evolve hyperparameters for x generations')
     parser.add_argument('--bucket', type=str, default='', help='gsutil bucket')
     parser.add_argument('--cache', type=str, nargs='?', const='ram', help='image --cache ram/disk')
     parser.add_argument('--image-weights', action='store_true', help='use weighted image selection for training')
@@ -456,10 +433,11 @@ def parse_opt(known=False):
 
 
 def main(opt, callbacks=Callbacks()):
+    # Print the info of opt
     print_args(vars(opt))
 
     # Resume (from specified or most recent last.pt)
-    if opt.resume and not check_comet_resume(opt) and not opt.evolve:
+    if opt.resume and not check_comet_resume(opt):
         last = Path(check_file(opt.resume) if isinstance(opt.resume, str) else get_latest_run())
         opt_yaml = last.parent.parent / 'opt.yaml'  # train options yaml
         opt_data = opt.data  # original dataset
@@ -476,17 +454,12 @@ def main(opt, callbacks=Callbacks()):
         opt.data, opt.cfg, opt.hyp, opt.weights, opt.project = \
             check_file(opt.data), check_yaml(opt.cfg), check_yaml(opt.hyp), str(opt.weights), str(opt.project)  # checks
         assert len(opt.cfg) or len(opt.weights), 'either --cfg or --weights must be specified'
-        if opt.evolve:
-            if opt.project == str(ROOT / 'runs/train'):  # if default project name, rename to runs/evolve
-                opt.project = str(ROOT / 'runs/evolve')
-            opt.exist_ok, opt.resume = opt.resume, False  # pass resume to exist_ok and disable resume
         if opt.name == 'cfg':
             opt.name = Path(opt.cfg).stem  # use model.yaml as name
         opt.save_dir = str(increment_path(Path(opt.project) / opt.name, exist_ok=opt.exist_ok))
 
     # Train
-    if not opt.evolve:
-        train(opt.hyp, opt, device, callbacks)
+    train(opt.hyp, opt, device, callbacks)
 
     # Evolve hyperparameters (optional)
     else:
@@ -529,8 +502,6 @@ def main(opt, callbacks=Callbacks()):
         if opt.noautoanchor:
             del hyp['anchors'], meta['anchors']
         opt.noval, opt.nosave, save_dir = True, True, Path(opt.save_dir)  # only val/save final epoch
-        # ei = [isinstance(x, (int, float)) for x in hyp.values()]  # evolvable indices
-        evolve_yaml, evolve_csv = save_dir / 'hyp_evolve.yaml', save_dir / 'evolve.csv'
         if opt.bucket:
             os.system(f'gsutil cp gs://{opt.bucket}/evolve.csv {evolve_csv}')  # download evolve.csv if exists
 
