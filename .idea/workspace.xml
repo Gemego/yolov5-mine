@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Delete the Segmentation model class which will not be used.">
-      <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-    </list>
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Introduce the original utils, waiting for further modification." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="2842000" />
+      <workItem from="1678169895070" duration="3625000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -117,7 +114,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678172911670</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Introduce the original utils, waiting for further modification.">
+      <created>1678173773453</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678173773453</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Introduce the original utils, waiting for further modification.">
+      <created>1678173849034</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678173849034</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +182,7 @@
     <MESSAGE value="Introduce the original train.py, waiting for further modification." />
     <MESSAGE value="Introduce the original detect.py, waiting for further modification." />
     <MESSAGE value="Delete the Segmentation model class which will not be used." />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete the Segmentation model class which will not be used." />
+    <MESSAGE value="Introduce the original utils, waiting for further modification." />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduce the original utils, waiting for further modification." />
   </component>
 </project>
