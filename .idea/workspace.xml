@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Introduce the original implementation of common.py which contains the important class DetectMultiBackend.">
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="WORLD_SIZE is used for distributed training which will not be used.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/general.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +28,7 @@
     <setting file="file://$PROJECT_DIR$/detect.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/models/yolo.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/train.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/utils/general.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="5136000" />
+      <workItem from="1678169895070" duration="5491000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -138,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678174607370</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="RANK is used for distributed training which will not be used.">
+      <created>1678176487786</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1678176487786</updated>
+    </task>
+    <task id="LOCAL-00013" summary="WORLD_SIZE is used for distributed training which will not be used.">
+      <created>1678176717114</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678176717114</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +210,8 @@
     <MESSAGE value="Delete the Segmentation model class which will not be used." />
     <MESSAGE value="Introduce the original utils, waiting for further modification." />
     <MESSAGE value="Introduce the original implementation of common.py which contains the important class DetectMultiBackend." />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduce the original implementation of common.py which contains the important class DetectMultiBackend." />
+    <MESSAGE value="RANK is used for distributed training which will not be used." />
+    <MESSAGE value="WORLD_SIZE is used for distributed training which will not be used." />
+    <option name="LAST_COMMIT_MESSAGE" value="WORLD_SIZE is used for distributed training which will not be used." />
   </component>
 </project>
