@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Add data dir which contains essential data files.">
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Delete useless flask dir.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/flask_rest_api/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/flask_rest_api/example_request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/flask_rest_api/restapi.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +49,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -65,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="13298000" />
+      <workItem from="1678169895070" duration="13818000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -207,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678182163867</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Delete useless flask dir.">
+      <created>1678200347509</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1678200347509</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +276,7 @@
     <MESSAGE value="Delete some code segments relative to hyp mutate(evolve)." />
     <MESSAGE value="Start reading and modifying train func line by line." />
     <MESSAGE value="Add data dir which contains essential data files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add data dir which contains essential data files." />
+    <MESSAGE value="Delete useless flask dir." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete useless flask dir." />
   </component>
 </project>
