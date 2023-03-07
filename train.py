@@ -39,20 +39,20 @@ from utils.loggers import Loggers
 from utils.loggers.comet.comet_utils import check_comet_resume
 from utils.loss import ComputeLoss
 from utils.metrics import fitness
-from utils.plots import plot_evolve
 from utils.torch_utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_optimizer,
                                smart_resume)
 
 
 def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictionary
-    save_dir, epochs, batch_size, weights, single_cls, evolve, data, cfg, resume, noval, nosave, workers, freeze = \
-        Path(opt.save_dir), opt.epochs, opt.batch_size, opt.weights, opt.single_cls, opt.evolve, opt.data, opt.cfg, \
+    save_dir, epochs, batch_size, weights, single_cls, data, cfg, resume, noval, nosave, workers, freeze = \
+        Path(opt.save_dir), opt.epochs, opt.batch_size, opt.weights, opt.single_cls, opt.data, opt.cfg, \
         opt.resume, opt.noval, opt.nosave, opt.workers, opt.freeze
+
     callbacks.run('on_pretrain_routine_start')
 
     # Directories
     w = save_dir / 'weights'  # weights dir
-    (w.parent if evolve else w).mkdir(parents=True, exist_ok=True)  # make dir
+    w.mkdir(parents=True, exist_ok=True)  # make dir
     last, best = w / 'last.pt', w / 'best.pt'
 
     # Hyperparameters
@@ -63,9 +63,8 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     opt.hyp = hyp.copy()  # for saving hyps to checkpoints
 
     # Save run settings
-    if not evolve:
-        yaml_save(save_dir / 'hyp.yaml', hyp)
-        yaml_save(save_dir / 'opt.yaml', vars(opt))
+    yaml_save(save_dir / 'hyp.yaml', hyp)
+    yaml_save(save_dir / 'opt.yaml', vars(opt))
 
     # Loggers
     data_dict = None
@@ -318,7 +317,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
         callbacks.run('on_fit_epoch_end', log_vals, epoch, best_fitness, fi)
 
         # Save model
-        if (not nosave) or (final_epoch and not evolve):  # if save
+        if (not nosave) or final_epoch:  # if save
             ckpt = {
                 'epoch': epoch,
                 'best_fitness': best_fitness,

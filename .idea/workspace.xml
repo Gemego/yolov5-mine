@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Delete some code segments relative to RANK.">
-      <change afterPath="$PROJECT_DIR$/val.py" afterDir="false" />
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Delete some code segments relative to hyp mutate(evolve).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/dataloaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dataloaders.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/torch_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/torch_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/google_app_engine/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/google_app_engine/additional_requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/google_app_engine/app.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,7 @@
     <setting file="file://$PROJECT_DIR$/detect.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/models/yolo.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/train.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/utils/callbacks.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/utils/general.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -63,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="9094000" />
+      <workItem from="1678169895070" duration="10187000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -184,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678179429455</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Delete some code segments relative to hyp mutate(evolve).">
+      <created>1678180753765</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1678180753765</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +254,7 @@
     <MESSAGE value="Don't need DDP mode." />
     <MESSAGE value="Don't docker" />
     <MESSAGE value="Delete some code segments relative to RANK." />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete some code segments relative to RANK." />
+    <MESSAGE value="Delete some code segments relative to hyp mutate(evolve)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete some code segments relative to hyp mutate(evolve)." />
   </component>
 </project>
