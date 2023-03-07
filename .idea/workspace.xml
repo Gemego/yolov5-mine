@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="WORLD_SIZE is used for distributed training which will not be used.">
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Don't need to check official git version of YOLOv5.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/general.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="5491000" />
+      <workItem from="1678169895070" duration="5647000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -154,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678176717114</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Don't need to check official git version of YOLOv5.">
+      <created>1678176814098</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1678176814098</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +218,7 @@
     <MESSAGE value="Introduce the original implementation of common.py which contains the important class DetectMultiBackend." />
     <MESSAGE value="RANK is used for distributed training which will not be used." />
     <MESSAGE value="WORLD_SIZE is used for distributed training which will not be used." />
-    <option name="LAST_COMMIT_MESSAGE" value="WORLD_SIZE is used for distributed training which will not be used." />
+    <MESSAGE value="Don't need to check official git version of YOLOv5." />
+    <option name="LAST_COMMIT_MESSAGE" value="Don't need to check official git version of YOLOv5." />
   </component>
 </project>
