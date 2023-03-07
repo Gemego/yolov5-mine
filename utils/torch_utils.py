@@ -85,16 +85,6 @@ def reshape_classifier_output(model, n=1000):
                 m[i] = nn.Conv2d(m[i].in_channels, n, m[i].kernel_size, m[i].stride, bias=m[i].bias is not None)
 
 
-@contextmanager
-def torch_distributed_zero_first(local_rank: int):
-    # Decorator to make all processes in distributed training wait for each local_master to do something
-    if local_rank not in [-1, 0]:
-        dist.barrier(device_ids=[local_rank])
-    yield
-    if local_rank == 0:
-        dist.barrier(device_ids=[0])
-
-
 def device_count():
     # Returns number of CUDA devices available. Safe version of torch.cuda.device_count(). Supports Linux and Windows
     assert platform.system() in ('Linux', 'Windows'), 'device_count() only supported on Linux or Windows'
