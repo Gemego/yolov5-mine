@@ -82,6 +82,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     # Config
     plots = not opt.noplots  # create plots
     cuda = device.type != 'cpu'
+    data_dict = data_dict or check_dataset(data)  # check if None
     init_seeds(opt.seed, deterministic=True)
     train_path, val_path = data_dict['train'], data_dict['val']
     nc = 1 if single_cls else int(data_dict['nc'])  # number of classes
