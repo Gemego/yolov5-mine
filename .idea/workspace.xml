@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Make __init__.py that has Loggers readable in Python format.">
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Change a few 'with' segments in dataloaders.py and delete GIT_INFO in train.py.">
+      <change afterPath="$PROJECT_DIR$/models/experimental.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/dataloaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dataloaders.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,7 @@
     <setting file="file://$PROJECT_DIR$/models/yolo.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/train.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/utils/callbacks.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/utils/dataloaders.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/utils/general.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/utils/loggers/__init__.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -45,7 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GraduationProject/yolov5-mine",
+    "last_opened_file_path": "D:/GraduationProject/yolov5-distillation-newest",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -64,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
-      <workItem from="1678169895070" duration="16489000" />
+      <workItem from="1678169895070" duration="27374000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678201067459</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Change a few 'with' segments in dataloaders.py and delete GIT_INFO in train.py.">
+      <created>1678204695470</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1678204695470</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +294,7 @@
     <MESSAGE value="Add data dir which contains essential data files." />
     <MESSAGE value="Delete useless flask dir." />
     <MESSAGE value="Make __init__.py that has Loggers readable in Python format." />
-    <option name="LAST_COMMIT_MESSAGE" value="Make __init__.py that has Loggers readable in Python format." />
+    <MESSAGE value="Change a few 'with' segments in dataloaders.py and delete GIT_INFO in train.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Change a few 'with' segments in dataloaders.py and delete GIT_INFO in train.py." />
   </component>
 </project>
