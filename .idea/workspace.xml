@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Train.py can run functionaly.">
-      <change afterPath="$PROJECT_DIR$/.idea/yolov5-mine.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teacher.py" afterDir="false" />
+    <list default="true" id="579dfc8c-5715-4315-9439-3a2896c84e49" name="变更" comment="Add teacher.py to implement teacher.py.">
+      <change afterPath="$PROJECT_DIR$/models/yolo_distill.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +97,7 @@
       <updated>1678099532676</updated>
       <workItem from="1678099534045" duration="3495000" />
       <workItem from="1678169895070" duration="31065000" />
-      <workItem from="1678263005834" duration="1949000" />
+      <workItem from="1678263005834" duration="2076000" />
     </task>
     <task id="LOCAL-00001" summary="Create models dir and yolov5s.yaml">
       <created>1678100674582</created>
@@ -290,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678263074789</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Add teacher.py to implement teacher.py.">
+      <created>1678267101371</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1678267101371</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +367,8 @@
     <MESSAGE value="Trying to run train.py with fixing some bugs." />
     <MESSAGE value="Uploading yolov5s.pt file." />
     <MESSAGE value="Train.py can run functionaly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Train.py can run functionaly." />
+    <MESSAGE value="Add teacher.py to implement teacher.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add teacher.py to implement teacher.py." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/yolov5_mine$train.coverage" NAME="train 覆盖结果" MODIFIED="1678262706996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
