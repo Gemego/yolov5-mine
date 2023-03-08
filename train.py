@@ -38,8 +38,7 @@ from utils.loggers import Loggers
 from utils.loggers.comet.comet_utils import check_comet_resume
 from utils.loss import ComputeLoss
 from utils.metrics import fitness
-from utils.torch_utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_optimizer,
-                               smart_resume)
+from utils.torch_utils import (EarlyStopping, ModelEMA, de_parallel, select_device, smart_optimizer, smart_resume)
 
 
 def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictionary
